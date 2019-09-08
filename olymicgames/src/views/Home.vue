@@ -1,18 +1,34 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <dropdown :open="this.openDropdown" :close="this.closeDropdown" :clickOpen="clickDropdown" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import dropdown from '@/components/dropdown.vue';
 
 export default {
   name: 'home',
   components: {
-    HelloWorld,
+    dropdown,
+  },
+  data() {
+    return {
+      clickDropdown: false,
+    };
+  },
+  methods: {
+    openDropdown() {
+      console.log('this.clickDropdown 1', this.clickDropdown);
+      this.clickDropdown = true;
+      console.log('this.clickDropdown 2', this.clickDropdown);
+    },
+    closeDropdown() {
+      console.log('this.clickDropdown 3', this.clickDropdown);
+      this.clickDropdown = false;
+      console.log('this.clickDropdown 4', this.clickDropdown);
+    },
   },
 };
 </script>
