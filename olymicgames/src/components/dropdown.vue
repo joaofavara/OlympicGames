@@ -10,22 +10,11 @@
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
+      <div v-for="items in this.labels">
         <a href="#" class="dropdown-item">
-          Dropdown item
+          {{ items.title }}
         </a>
-        <a class="dropdown-item">
-          Other dropdown item
-        </a>
-        <a href="#" class="dropdown-item ">
-          Active dropdown item
-        </a>
-        <a href="#" class="dropdown-item">
-          Other dropdown item
-        </a>
-        <hr class="dropdown-divider">
-        <a href="#" class="dropdown-item">
-          With a divider
-        </a>
+      </div>
       </div>
     </div>
   </div>
@@ -38,10 +27,11 @@ export default {
     clickOpen: Boolean,
     open: Function,
     close: Function,
+    labels: Array,
   },
   methods: {
     dropdown() {
-      console.log('teste....');
+      console.log('teste....', this.labels);
       this.clickOpen ? this.close() : this.open();
     },
   },

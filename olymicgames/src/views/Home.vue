@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <dropdown :open="this.openDropdown" :close="this.closeDropdown" :clickOpen="clickDropdown" />
+    <dropdown :labels="this.options"  :open="this.openDropdown" :close="this.closeDropdown" :clickOpen="clickDropdown" />
   </div>
 </template>
 
@@ -16,18 +16,21 @@ export default {
   data() {
     return {
       clickDropdown: false,
+      options: [
+        {title: 'Teste 1'},
+        {title: 'Teste 2'},
+        {title: 'Teste 3'},
+        {title: 'Teste 4'},
+        {title: 'Teste 5'},
+      ]
     };
   },
   methods: {
     openDropdown() {
-      console.log('this.clickDropdown 1', this.clickDropdown);
       this.clickDropdown = true;
-      console.log('this.clickDropdown 2', this.clickDropdown);
     },
     closeDropdown() {
-      console.log('this.clickDropdown 3', this.clickDropdown);
       this.clickDropdown = false;
-      console.log('this.clickDropdown 4', this.clickDropdown);
     },
   },
 };
