@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown" @click="dropdown" :class="{ 'is-active':clickOpen }">
+  <div class="dropdown" @click="dropdown" :class="{ 'is-active':clickDropdown }">
     <div class="dropdown-trigger">
       <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
         <span>Dropdown button</span>
@@ -11,8 +11,8 @@
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
       <div v-for="items in this.labels">
-        <a href="#" class="dropdown-item">
-          {{ items.title }}
+        <a v-for="item in items" href="#" class="dropdown-item">
+          {{ item }}
         </a>
       </div>
       </div>
@@ -24,15 +24,29 @@
 export default {
   name: 'HelloWorld',
   props: {
-    clickOpen: Boolean,
-    open: Function,
-    close: Function,
-    labels: Array,
+    // clickOpen: Boolean,
+    // open: Function,
+    // close: Function,
+    labels: Object,
+  },
+  data() {
+    return {
+      clickDropdown: false,
+    };
+  },
+  mounted() {
+    console.log('this.labels: ', this.labels);
   },
   methods: {
     dropdown() {
       console.log('teste....', this.labels);
-      this.clickOpen ? this.close() : this.open();
+      this.clickDropdown ? this.closeDropdown() : this.openDropdown();
+    },
+    openDropdown() {
+      this.clickDropdown = true;
+    },
+    closeDropdown() {
+      this.clickDropdown = false;
     },
   },
 };
