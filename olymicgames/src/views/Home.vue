@@ -3,13 +3,16 @@
     <div v-for="items in this.options">
       <dropdown :labels="items" />
       <br />
+      <br />
+      <br />
+
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import dropdown from '@/components/dropdown.vue';
+// import dropdown from '@/components/dropdown.vue';
 
 export default {
   name: 'home',
@@ -21,12 +24,15 @@ export default {
       clickDropdown: false,
       options: [
         {
+          name: 'Year',
           title: [ 'Teste 1', 'Teste 2', 'Teste 3', 'Teste 4', 'Teste 5' ],
         },
         {
+          name: 'Sport',
           title: [ 'Teste 11', 'Teste 22', 'Teste 33', 'Teste 44', 'Teste 55' ],
         },
         {
+          name: 'Event',
           title: [ 'Teste 111', 'Teste 222', 'Teste 333', 'Teste 444', 'Teste 555' ],
         }
       ],

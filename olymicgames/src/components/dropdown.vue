@@ -2,7 +2,7 @@
   <div class="dropdown" @click="dropdown" :class="{ 'is-active':clickDropdown }">
     <div class="dropdown-trigger">
       <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-        <span>Dropdown button</span>
+        <span>{{ this.value ? this.value : `Select the ${this.labels.name}` }}</span>
         <span class="icon is-small">
           <i class="fas fa-angle-down" aria-hidden="true"></i>
         </span>
@@ -10,10 +10,11 @@
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
-      <div v-for="items in this.labels">
-        <a v-for="item in items" href="#" class="dropdown-item">
-          {{ item }}
-        </a>
+      <div v-for="items in this.labels.title">
+        <div @click="setValue(items)" class="dropdown-item">
+          {{ items }}
+          <hr class="dropdown-divider">
+        </div>
       </div>
       </div>
     </div>
@@ -32,6 +33,7 @@ export default {
   data() {
     return {
       clickDropdown: false,
+      value: null,
     };
   },
   mounted() {
@@ -48,6 +50,10 @@ export default {
     closeDropdown() {
       this.clickDropdown = false;
     },
+    setValue(data) {
+      this.value = data;
+      console.log('this.value: ', this.value);
+    }
   },
 };
 </script>
